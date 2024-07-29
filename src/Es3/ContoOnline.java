@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class ContoOnline extends ContoCorrente {
     private static Logger logger = LoggerFactory.getLogger(ContoOnline.class);
-    private double maxPrelievo;
+    protected double maxPrelievo;
 
     public ContoOnline(String titolare, double saldo, double maxPrelievo) {
         super(titolare, saldo);
@@ -16,14 +16,15 @@ public class ContoOnline extends ContoCorrente {
         System.out.println("Titolare: " + this.titolare + " - Saldo: " + this.saldo + " - Num movimenti: " + this.nMovimenti + " - Massimo movimenti: " + this.maxMovimenti + " - Massimo prelievo possibile: " + this.maxPrelievo);
     }
 
-    public void preleva(double x) {
+    public void preleva(double x) throws BancaExcepion {
         if (x <= this.maxPrelievo) {
             try {
-
                 super.preleva(x);
             } catch (BancaExcepion e) {
                 logger.error(e.getMessage());
             }
+        } else {
+            throw new BancaExcepion("il prelievo non è disponibile.");
         }
     }
 }
