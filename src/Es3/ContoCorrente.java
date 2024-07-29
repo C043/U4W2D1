@@ -12,10 +12,11 @@ public class ContoCorrente {
         this.nMovimenti = 0;
     }
 
-    public void preleva(double x) {
+    public void preleva(double x) throws BancaExcepion {
         if (nMovimenti < maxMovimenti) this.saldo = saldo - x;
-        else this.saldo = saldo - x - 0.50;
         nMovimenti++;
+        if (this.saldo < 0) throw new BancaExcepion("Il conto è in rosso.");
+        else this.saldo = saldo - x - 0.50;
     }
 
     public double getSaldo() {

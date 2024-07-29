@@ -1,6 +1,10 @@
 package Es3;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ContoOnline extends ContoCorrente {
+    private static Logger logger = LoggerFactory.getLogger(ContoOnline.class);
     private double maxPrelievo;
 
     public ContoOnline(String titolare, double saldo, double maxPrelievo) {
@@ -14,7 +18,12 @@ public class ContoOnline extends ContoCorrente {
 
     public void preleva(double x) {
         if (x <= this.maxPrelievo) {
-            super.preleva(x);
+            try {
+
+                super.preleva(x);
+            } catch (BancaExcepion e) {
+                logger.error(e.getMessage());
+            }
         }
     }
 }
