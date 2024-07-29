@@ -17,8 +17,6 @@ public class DoubleVersion {
             double litri = Double.parseDouble(scanner.nextLine());
             if (litri == 0) System.out.println("Benzina infinita!");
             else System.out.println("Il consumo è di " + calcoloConsumo(km, litri) + " km al litro");
-        } catch (ArithmeticException e) {
-            logger.error("Impossibile dividere per 0");
         } catch (NumberFormatException e) {
             logger.error("Devi inserire dei numeri interi!");
         } catch (Exception e) {
