@@ -27,4 +27,8 @@ public class ContoOnline extends ContoCorrente {
             throw new BancaExcepion("il prelievo non è disponibile.");
         }
     }
+
+    public double getMaxPrelievo() {
+        return maxPrelievo;
+    }
 }
