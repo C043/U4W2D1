@@ -15,7 +15,7 @@ public class Main {
         int input = Integer.parseInt(scanner.nextLine());
         try {
             int result = numbers[input] / input;
-            logger.info("Il risultato è {}", result);
+            System.out.println("Il risultato è " + result);
         } catch (Exception e) {
             logger.error("Dovevi inserire un numero da 1 a 10!");
         }
